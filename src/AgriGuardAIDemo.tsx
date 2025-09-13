@@ -1,17 +1,28 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-type ScanResult = {
-  diagnosis: string;
-  recommendation: string;
-  confidence: string;
-} | null;
+type ScanResult =
+  | {
+      diagnosis: string;
+      recommendation: string;
+      confidence: string;
+    }
+  | null;
 
 // AgriGuard AI — Enhanced demo UI
 export default function AgriGuardAIDemo() {
   const [screen, setScreen] = useState<"home" | "scan" | "carbon">("home");
   const [location] = useState("Kisii, Kenya");
-  const [weather] = useState({ temp: 22, condition: "Partly Cloudy", rainProb: 15 });
-  const [pestRisk] = useState({ crop: "Maize", level: "High", risk: "maize rust", hours: 48 });
+  const [weather] = useState({
+    temp: 22,
+    condition: "Partly Cloudy",
+    rainProb: 15,
+  });
+  const [pestRisk] = useState({
+    crop: "Maize",
+    level: "High",
+    risk: "maize rust",
+    hours: 48,
+  });
   const [scanResult, setScanResult] = useState<ScanResult>(null);
   const [scanning, setScanning] = useState(false);
   const [carbon] = useState({
@@ -54,10 +65,10 @@ export default function AgriGuardAIDemo() {
     "px-3 py-2 rounded-xl text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-1";
 
   return (
-    <div className="max-w-sm mx-auto bg-white shadow-lg rounded-2xl p-4 font-sans">
+    <div className="max-w-sm w-full mx-auto bg-white shadow-lg rounded-2xl p-4 font-sans">
       {/* Header */}
       <header className="flex items-center justify-between mb-4">
-        <h1 className="text-xl font-bold bg-gradient-to-r from-green-600 to-sky-600 bg-clip-text text-transparent">
+        <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-green-600 to-sky-600 bg-clip-text text-transparent">
           AgriGuard AI
         </h1>
         <div className="text-xs text-gray-500">Demo</div>
@@ -68,7 +79,7 @@ export default function AgriGuardAIDemo() {
         <main>
           <section className="mb-3 flex items-center justify-between">
             <div>
-              <div className="text-sm text-gray-500">Location</div>
+              <div className="text-xs text-gray-500">Location</div>
               <div className="font-semibold">{location}</div>
             </div>
             <button
@@ -82,7 +93,7 @@ export default function AgriGuardAIDemo() {
           <section className="mb-4 p-3 rounded-xl bg-gradient-to-r from-sky-50 to-white border border-sky-100">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-gray-500">Weather</div>
+                <div className="text-xs text-gray-500">Weather</div>
                 <div className="text-lg font-semibold">
                   {weather.temp}°C · {weather.condition}
                 </div>
@@ -91,7 +102,7 @@ export default function AgriGuardAIDemo() {
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-sm text-gray-500">Pest Risk</div>
+                <div className="text-xs text-gray-500">Pest Risk</div>
                 <div
                   className={`font-bold ${
                     pestRisk.level === "High" ? "text-red-600" : "text-green-600"
@@ -115,10 +126,14 @@ export default function AgriGuardAIDemo() {
           <section className="mt-4 text-sm text-gray-500">
             <div className="mb-2">Quick actions</div>
             <div className="flex gap-2">
-              <button className={`${buttonBase} flex-1 bg-gray-100 hover:bg-gray-200`}>
+              <button
+                className={`${buttonBase} flex-1 bg-gray-100 hover:bg-gray-200`}
+              >
                 Advice
               </button>
-              <button className={`${buttonBase} flex-1 bg-gray-100 hover:bg-gray-200`}>
+              <button
+                className={`${buttonBase} flex-1 bg-gray-100 hover:bg-gray-200`}
+              >
                 Market Price
               </button>
             </div>
@@ -184,7 +199,9 @@ export default function AgriGuardAIDemo() {
                   Confidence: {scanResult.confidence}
                 </div>
                 <div className="mt-3 flex gap-2">
-                  <button className={`${buttonBase} flex-1 bg-green-600 text-white hover:bg-green-700`}>
+                  <button
+                    className={`${buttonBase} flex-1 bg-green-600 text-white hover:bg-green-700`}
+                  >
                     Save to log
                   </button>
                   <button
@@ -219,8 +236,10 @@ export default function AgriGuardAIDemo() {
           </section>
 
           <section className="p-3 bg-white rounded-xl shadow-sm mb-4">
-            <div className="text-sm text-gray-500">This season</div>
-            <div className="font-semibold text-xl">{carbon.sequesteredTons} t CO₂</div>
+            <div className="text-xs text-gray-500">This season</div>
+            <div className="font-semibold text-xl">
+              {carbon.sequesteredTons} t CO₂
+            </div>
             <div className="text-sm text-gray-700 mt-2">
               Estimated credits: ${carbon.creditsUSD.toFixed(2)}
             </div>
@@ -232,8 +251,9 @@ export default function AgriGuardAIDemo() {
           <section className="p-3 bg-green-50 rounded-xl">
             <div className="text-sm text-gray-700">AI Recommendation</div>
             <div className="mt-2 text-sm text-gray-600">
-              To increase credits, expand cover crops to 2 acres. Verified credits
-              could add <span className="font-semibold">$12</span> next season.
+              To increase credits, expand cover crops to 2 acres. Verified
+              credits could add{" "}
+              <span className="font-semibold">${12}</span> next season.
             </div>
             <div className="mt-3">
               <button className="w-full py-2 bg-green-600 text-white rounded-xl hover:bg-green-700">
