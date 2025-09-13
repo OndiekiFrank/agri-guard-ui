@@ -1,17 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    dedupe: ['react', 'react-dom'], // prevents multiple React instances
+    dedupe: ['react', 'react-dom']
   },
   server: {
     fs: {
-      strict: false, // allows serving files outside root if needed
-    },
+      strict: false
+    }
   },
   build: {
-    target: 'esnext', // modern browsers
-  },
+    target: 'esnext'
+  }
 })
