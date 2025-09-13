@@ -1,23 +1,20 @@
-{
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",          // ✅ ensures JSX namespace is found
-    "noUnusedLocals": false,     // ✅ prevent build failure on unused vars
-    "noUnusedParameters": false  // ✅ prevent build failure on unused params
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+"compilerOptions": {
+  "target": "ESNext",
+  "useDefineForClassFields": true,
+  "lib": ["DOM", "DOM.Iterable", "ESNext"],
+  "allowJs": false,
+  "skipLibCheck": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "strict": true,
+  "forceConsistentCasingInFileNames": true,
+  "module": "ESNext",
+  "moduleResolution": "Node16",
+  "allowImportingTsExtensions": true,
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+  "noEmit": true,
+  "jsx": "react-jsx",
+  "noUnusedLocals": false,
+  "noUnusedParameters": false
 }
